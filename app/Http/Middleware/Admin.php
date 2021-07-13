@@ -18,7 +18,7 @@ class Admin
     {
         $destinations = config('custom.roles_destinations');
 
-        if (Auth::check()) {
+        if (!Auth::check()) {
             return redirect()->route('login');
         }
 

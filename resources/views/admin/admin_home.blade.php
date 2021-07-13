@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
-        You are logged in as User
+        You are logged in as admin
     </div>
 </div>
 @endsection
