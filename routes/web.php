@@ -20,4 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/home', 'Admin\HomeController@index')->name('admin');
+Route::post('/create-checkout-session','HomeController@CreateCheckoutSession')->name('checkout');
+
+Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){
+
+    Route::get('/users', 'HomeController@getAllUsers')->name('users');
+    Route::get('/home', 'HomeController@index')->name('admin');
+});
+

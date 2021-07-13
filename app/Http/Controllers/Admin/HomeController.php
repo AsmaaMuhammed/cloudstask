@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('admin.admin_home');
+    }
+
+    public function getAllUsers()
+    {
+        $users = User::active()->get();
+        return view('admin.users',compact('users'));
     }
 }

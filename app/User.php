@@ -39,5 +39,11 @@ class User extends Authenticatable
 
     protected $attributes = [
         'role' => 'customer',
+        'active' => 1,
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1)->where('role', 'customer');
+    }
 }

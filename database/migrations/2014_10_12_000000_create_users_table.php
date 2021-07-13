@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role'); //admin- customer by default
+            $table->integer('active'); //admin- customer by default
             $table->rememberToken();
             //$table->timestamps();
             $table->timestamp('created_at')->useCurrent();

@@ -34,6 +34,8 @@
           integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
           crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="{{asset('css/global.css')}}" />
+
     @stack('third_party_stylesheets')
 
     @stack('page_css')
@@ -148,6 +150,13 @@
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
 </script>
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+<script src="{{asset('js/client.js')}}" defer></script>
 
 @stack('third_party_scripts')
 
