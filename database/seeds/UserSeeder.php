@@ -11,12 +11,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('users')->insert([
+        \DB::table('users')->insert(
+            [
             'name' => 'clouds_admin',
             'role' => 'admin',
             'active' => 1,
             'email' => 'admin@clouds.com',
             'password' => \Hash::make('12345678'),
-        ]);
+            ]
+        );
     }
 }

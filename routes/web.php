@@ -19,12 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'customer'], function(){
+
+Route::get('/payment', 'HomeController@payment')->name('payment');
 Route::post('/create-checkout-session','HomeController@CreateCheckoutSession')->name('checkout');
+Route::post('/charge','HomeController@charge')->name('charge');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){
+});
 
-    Route::get('/users', 'HomeController@getAllUsers')->name('users');
-    Route::get('/home', 'HomeController@index')->name('admin');
+Route::group([ 'prefix' => 'admin', 'name'=>'admin.', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){
+
+    Route::resource('/customers', 'CustomersController')->except(['show']);
+    Route::get('/customers/changeActive', 'CustomersController@changeActive')->name('customers.changeActive');
+    Route::get('/home', 'HomeController@index')->name('admin.home');
 });
 

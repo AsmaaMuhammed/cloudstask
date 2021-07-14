@@ -1,2 +1,2 @@
 
-<li><a href="{{route('users')}}">Users</a></li>
+<li><a href="{{route('customers.index')}}">Customers</a></li>

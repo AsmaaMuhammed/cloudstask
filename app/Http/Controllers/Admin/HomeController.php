@@ -27,9 +27,4 @@ class HomeController extends Controller
         return view('admin.admin_home');
     }
 
-    public function getAllUsers()
-    {
-        $users = User::active()->get();
-        return view('admin.users',compact('users'));
-    }
 }

@@ -30,7 +30,14 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        $this->redirectTo = route(config('custom.roles_destinations')[\Auth::user()->role]);
+        $role = \Auth::user()->role;
+        $charges = \Auth::user()->charges->first();
+
+        if($role === 'customer' && isset($charges))
+            $this->redirectTo = RouteServiceProvider::HOME;
+        else
+            $this->redirectTo = route(config('custom.roles_destinations')[$role]);
+
         return $this->redirectTo;
     }
 

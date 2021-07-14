@@ -34,7 +34,8 @@
           integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
           crossorigin="anonymous"/>
 
-    <link rel="stylesheet" href="{{asset('css/global.css')}}" />
+    {{--<link rel="stylesheet" href="{{asset('css/global.css')}}" />--}}
+    <link rel="stylesheet" href="{{asset('css/payment.css')}}" />
 
     @stack('third_party_stylesheets')
 
@@ -87,7 +88,27 @@
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="margin-left: 0;">
+
+<br><br>
+
+        @if (session()->has('success_message'))
+            <div class="alert alert-success col-md-3" style="margin-left: 10px;">
+                {{ session()->get('success_message') }}
+            </div>
+        @endif
+
+        @if(count($errors) > 0)
+            <div class="alert alert-danger col-md-3" style="margin-left: 10px;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <section class="content">
+
             @yield('content')
         </section>
     </div>

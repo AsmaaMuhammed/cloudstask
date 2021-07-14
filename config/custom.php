@@ -3,8 +3,9 @@
 return [
 
     'roles_destinations' => [
-        'admin'=> 'admin',
-        'customer' => 'home'
+        'admin'=> 'admin.home',
+        'customer' => 'payment',
+        'user'=>'home'
     ],
 
 
